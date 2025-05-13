@@ -24,7 +24,7 @@ export class PostEditComponent implements OnInit {
   ) {
     this.postForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(50)]],
-      message: ['', [Validators.required, Validators.maxLength(500)]],
+      message: ['', [Validators.required, Validators.maxLength(1000)]],
     });
   }
 
