@@ -1,0 +1,85 @@
+<nav class="header">
+  <div class="title">
+    <p class="title-cn">生日快樂沙龍</p>
+    <p>Happy Birthday Sharonnn! 🥳🎂</p>
+  </div>
+</nav>
+<main class="main">
+  <div class="pre-wish">
+    <p>
+      Happy birthday Sharonnnn! 🎂 May god bless you with health, wealth and
+      everything you deserve! 🥳 Here's a lil surprise surprise from people who
+      love you! 💞
+    </p>
+  </div>
+  <div class="wish-card" *ngFor="let wish of wishesData">
+    <div class="side-img">
+      <img src="{{ wish.imageURL }}" class="shar-img" alt="" />
+    </div>
+    <div class="wish">
+      <div class="wish-body">
+        <p>
+          {{ wish.wish }}
+        </p>
+      </div>
+      <div class="wisher-name">
+        <p>From {{ wish.wisherName }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="wish-card falcon-card">
+    <div class="side-img">
+      <img src="../assets/sharon.jpg" class="shar-img" alt="" />
+    </div>
+    <div class="wish">
+      <div class="wish-body">
+        <p>
+          Wishing you a very happy 21st birthday Sharonnn! 🎂🎉 You are someone
+          who makes the world a happier, more joyful place for everyone 🥳
+          Listening to you sing has always pulled me out from whatever I was
+          going through and put me in a good state of mind! 🎊 May god bless you
+          with health, wealth and everything you deserve! 🎁 Have an amazing
+          year! 🎊 oh and don&apos;t forget to party hard Sharonnn! 🥳🎉
+        </p>
+      </div>
+      <div class="wisher-name falcon-name">
+        <p>From SpareFalcon</p>
+      </div>
+    </div>
+  </div>
+  <section class="surprise-btn" *ngIf="!showVideo" (click)="onShowVideoClick()">
+    <div class="gift-img">
+      <img src="../assets/Resources/gift-sticker.png" alt="" />
+    </div>
+    <p class="surprise-description">Click Here For a Surprise! 🥳</p>
+  </section>
+  <section class="video-card" *ngIf="showVideo">
+    <p class="video-title">Oh, and One more thing...</p>
+    <p class="video-description">
+      <a href="https://www.twitch.tv/daddydestroyer72" target="_blank"
+        >Destroyer</a
+      >, being the sweetest person he is, has made a video for you Sharonnn!
+      Have a look at it! 🎉
+    </p>
+    <div class="video-container">
+      <iframe
+        class="video"
+        src="https://drive.google.com/file/d/11R5EQ5BH2LDim1HCvlS5G6QT7yqPXpHx/preview"
+        title="Happy Birthday Sharon"
+        width="640"
+        height="480"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+  <footer class="footer">
+    <p>
+      Crafted with ❤️ by
+      <a href="https://www.instagram.com/roger_nyx95/" target="_blank"
+        >SpareFalcon</a
+      >
+    </p>
+  </footer>
+</main>

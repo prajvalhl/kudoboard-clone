@@ -1,0 +1,221 @@
+.header {
+  background-color: #7e22ce;
+  padding: 1rem;
+  height: 10rem;
+  width: 100%;
+  display: table;
+}
+
+.title {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+}
+
+.title-cn {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #3b0764;
+  text-align: center;
+}
+
+.pre-wish {
+  background-color: #a855f7;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.pre-wish p {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  color: #ede9fe;
+}
+
+.wish-card {
+  width: 50%;
+  margin: 1rem auto;
+  background-color: #ede9fe;
+  border-radius: 0.5rem;
+  display: flex;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  .side-img {
+    width: 100%;
+    flex: 0 0 120px;
+    border-radius: 0.5rem 0 0 0.5rem;
+    max-height: 15rem;
+  }
+
+  .shar-img {
+    width: 8rem;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem 0 0 0.5rem;
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 50%,
+      transparent 100%
+    );
+  }
+
+  .wish {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .wish-body {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .wisher-name {
+    color: #8b5cf6;
+    text-align: right;
+    padding: 0 1rem 1rem 0;
+  }
+}
+
+.falcon-card {
+  background-color: #fff1f2;
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+
+  .falcon-name {
+    color: #f43f5e;
+  }
+}
+
+.video-card {
+  width: 50%;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: rgba(147, 51, 234, 0.5);
+  border-radius: 0.5rem;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+
+  .video-title {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    text-shadow: rgba(0, 0, 0, 0.3) 1px 0 10px;
+  }
+
+  .video-description {
+    text-align: center;
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.3) 1px 0 10px;
+  }
+
+  .video-description a {
+    color: white;
+  }
+
+  .video-description a:hover {
+    color: #3b0764;
+  }
+
+  .video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .video {
+    border-radius: 0.5rem;
+  }
+}
+
+.surprise-btn {
+  width: 50%;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: rgba(147, 51, 234, 0.5);
+  border-radius: 0.5rem;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+
+  .gift-img {
+    display: flex;
+    justify-content: center;
+  }
+
+  .gift-img img {
+    width: 5rem;
+  }
+
+  .surprise-description {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    text-shadow: rgba(0, 0, 0, 0.3) 1px 0 10px;
+  }
+}
+
+.footer {
+  background-color: #a855f7;
+  padding: 1rem 1rem 2rem 1rem;
+
+  p {
+    text-align: center;
+    color: #ddd;
+  }
+
+  a {
+    color: #3b0764;
+  }
+
+  a:hover {
+    color: #ede9fe;
+  }
+}
+
+@media (max-width: 950px) {
+  .title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .pre-wish p {
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    color: #ddd;
+  }
+
+  .wish-card {
+    width: 95%;
+
+    .side-img {
+      flex: 0 0 120px;
+      max-height: 15rem;
+    }
+
+    .wish-body {
+      text-align: left;
+      font-size: 1rem;
+    }
+  }
+
+  .video-card {
+    width: 95%;
+
+    .video-title {
+      font-size: 1.2rem;
+    }
+  }
+
+  .surprise-btn {
+    width: 95%;
+  }
+}
