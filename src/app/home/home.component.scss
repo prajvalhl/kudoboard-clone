@@ -45,7 +45,8 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.2s;
-    height: 250px;
+    min-height: 250px;
+    max-height: 400px;
     position: relative;
 
     &:hover {
@@ -58,6 +59,7 @@
       overflow-y: auto;
 
       .post-author {
+        text-align: right;
         font-size: 18px;
         font-weight: 600;
         margin-top: 0;

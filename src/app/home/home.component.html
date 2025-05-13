@@ -13,12 +13,8 @@
       [style.background-color]="post.color"
     >
       <div class="post-content">
-        <h3 class="post-author">{{ post.name }}</h3>
         <p class="post-message">{{ post.message }}</p>
-      </div>
-      <div class="post-footer">
-        <a [routerLink]="['/edit', post.id]" class="edit-link">Edit</a>
-        <span class="post-date">{{ post.createdAt | date : "short" }}</span>
+        <h3 class="post-author">From {{ post.name }}</h3>
       </div>
     </div>
   </div>
