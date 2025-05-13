@@ -1,0 +1,68 @@
+<div class="form-overlay">
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Add New Post</h2>
+      <button class="close-btn" (click)="closeForm()">&times;</button>
+    </div>
+
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Your name"
+        />
+        <div
+          class="error-message"
+          *ngIf="postForm.get('name')?.invalid && postForm.get('name')?.touched"
+        >
+          <span *ngIf="postForm.get('name')?.errors?.['required']"
+            >Name is required</span
+          >
+          <span *ngIf="postForm.get('name')?.errors?.['maxlength']"
+            >Name must be less than 50 characters</span
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea
+          id="message"
+          formControlName="message"
+          rows="5"
+          placeholder="Write your message here..."
+        ></textarea>
+        <div
+          class="error-message"
+          *ngIf="
+            postForm.get('message')?.invalid && postForm.get('message')?.touched
+          "
+        >
+          <span *ngIf="postForm.get('message')?.errors?.['required']"
+            >Message is required</span
+          >
+          <span *ngIf="postForm.get('message')?.errors?.['maxlength']"
+            >Message must be less than 500 characters</span
+          >
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="closeForm()">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="postForm.invalid || isSubmitting"
+        >
+          <span *ngIf="!isSubmitting">Submit</span>
+          <span *ngIf="isSubmitting">Submitting...</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

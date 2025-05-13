@@ -1,0 +1,30 @@
+<div class="home-container">
+  <header class="header">
+    <h1 class="title">KudoBoard</h1>
+    <button class="add-btn" (click)="toggleForm()">+ Add Post</button>
+  </header>
+
+  <app-post-form *ngIf="showForm" (formClosed)="toggleForm()"></app-post-form>
+
+  <div class="posts-grid" *ngIf="posts.length > 0">
+    <div
+      class="post-card"
+      *ngFor="let post of posts"
+      [style.background-color]="post.color"
+    >
+      <div class="post-content">
+        <h3 class="post-author">{{ post.name }}</h3>
+        <p class="post-message">{{ post.message }}</p>
+      </div>
+      <div class="post-footer">
+        <a [routerLink]="['/edit', post.id]" class="edit-link">Edit</a>
+        <span class="post-date">{{ post.createdAt | date : "short" }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" *ngIf="posts.length === 0">
+    <p>No posts yet. Be the first to add one!</p>
+    <button class="add-btn" (click)="toggleForm()">Add Post</button>
+  </div>
+</div>

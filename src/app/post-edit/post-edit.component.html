@@ -1,0 +1,83 @@
+<div class="edit-container">
+  <header class="header">
+    <h1 class="title">Edit Your Post</h1>
+    <button class="home-btn" (click)="goToHome()">Back to Board</button>
+  </header>
+
+  <div class="edit-content" *ngIf="!notFound">
+    <div class="edit-info">
+      <p>This is your unique edit link. Save it to edit your post later:</p>
+      <div class="link-box">
+        <span class="edit-link">{{ editUrl }}</span>
+        <button class="copy-btn" (click)="copyEditLink()">Copy</button>
+      </div>
+    </div>
+
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Your name"
+        />
+        <div
+          class="error-message"
+          *ngIf="postForm.get('name')?.invalid && postForm.get('name')?.touched"
+        >
+          <span *ngIf="postForm.get('name')?.errors?.['required']"
+            >Name is required</span
+          >
+          <span *ngIf="postForm.get('name')?.errors?.['maxlength']"
+            >Name must be less than 50 characters</span
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea
+          id="message"
+          formControlName="message"
+          rows="5"
+          placeholder="Write your message here..."
+        ></textarea>
+        <div
+          class="error-message"
+          *ngIf="
+            postForm.get('message')?.invalid && postForm.get('message')?.touched
+          "
+        >
+          <span *ngIf="postForm.get('message')?.errors?.['required']"
+            >Message is required</span
+          >
+          <span *ngIf="postForm.get('message')?.errors?.['maxlength']"
+            >Message must be less than 500 characters</span
+          >
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="goToHome()">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="postForm.invalid || isSubmitting"
+        >
+          <span *ngIf="!isSubmitting && !success">Save Changes</span>
+          <span *ngIf="isSubmitting">Saving...</span>
+          <span *ngIf="success">Saved!</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="not-found" *ngIf="notFound">
+    <h2>Post Not Found</h2>
+    <p>Sorry, the post you're looking for doesn't exist or has been removed.</p>
+    <button class="home-btn" (click)="goToHome()">Back to Board</button>
+  </div>
+</div>
