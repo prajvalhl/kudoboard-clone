@@ -11,6 +11,7 @@ import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostService } from './service/post.service';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent,
     PostFormComponent,
     PostEditComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

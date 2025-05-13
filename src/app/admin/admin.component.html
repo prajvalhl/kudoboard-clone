@@ -1,0 +1,96 @@
+<div class="admin-container">
+  <header class="header">
+    <h1 class="title">Admin Dashboard</h1>
+    <button class="home-btn" (click)="goToHome()">Back to Board</button>
+  </header>
+
+  <div class="admin-tools">
+    <div class="search-box">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        placeholder="Search by name or message content..."
+        class="search-input"
+      />
+    </div>
+
+    <div class="sort-controls">
+      <span class="sort-label">Sort by:</span>
+      <button
+        class="sort-btn"
+        [class.active]="sortBy === 'date'"
+        (click)="toggleSort('date')"
+      >
+        Date {{ getSortIcon("date") }}
+      </button>
+      <button
+        class="sort-btn"
+        [class.active]="sortBy === 'name'"
+        (click)="toggleSort('name')"
+      >
+        Name {{ getSortIcon("name") }}
+      </button>
+    </div>
+  </div>
+
+  <div class="admin-content">
+    <div *ngIf="filteredPosts.length === 0" class="empty-state">
+      <p *ngIf="posts.length === 0">No posts have been created yet.</p>
+      <p *ngIf="posts.length > 0">No posts match your search criteria.</p>
+    </div>
+
+    <table class="posts-table" *ngIf="filteredPosts.length > 0">
+      <thead>
+        <tr>
+          <th class="col-preview">Preview</th>
+          <th class="col-name">Name</th>
+          <th class="col-message">Message</th>
+          <th class="col-date">Date</th>
+          <th class="col-actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let post of filteredPosts"
+          [style.border-left-color]="post.color"
+        >
+          <td class="col-preview">
+            <div class="post-preview" [style.background-color]="post.color">
+              <div class="preview-content">
+                <span class="preview-name">{{ post.name }}</span>
+                <span class="preview-message"
+                  >{{ post.message | slice : 0 : 30
+                  }}{{ post.message.length > 30 ? "..." : "" }}</span
+                >
+              </div>
+            </div>
+          </td>
+          <td class="col-name">{{ post.name }}</td>
+          <td class="col-message">
+            {{ post.message | slice : 0 : 100
+            }}{{ post.message.length > 100 ? "..." : "" }}
+          </td>
+          <td class="col-date">{{ post.createdAt | date : "short" }}</td>
+          <td class="col-actions">
+            <div class="action-buttons">
+              <button class="edit-btn" (click)="editPost(post.id)">Edit</button>
+              <button class="delete-btn" (click)="confirmDeletePost(post.id)">
+                Delete
+              </button>
+            </div>
+
+            <div class="confirm-delete" *ngIf="confirmDelete === post.id">
+              <p>Are you sure?</p>
+              <div class="confirm-actions">
+                <button class="confirm-yes" (click)="deletePost(post.id)">
+                  Yes
+                </button>
+                <button class="confirm-no" (click)="cancelDelete()">No</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

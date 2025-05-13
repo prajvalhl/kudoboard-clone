@@ -78,6 +78,19 @@ export class PostService {
     return this.posts[postIndex];
   }
 
+  deletePost(id: string): boolean {
+    const initialLength = this.posts.length;
+    this.posts = this.posts.filter((post) => post.id !== id);
+
+    if (this.posts.length !== initialLength) {
+      this.postsSubject.next([...this.posts]);
+      this.savePosts();
+      return true;
+    }
+
+    return false;
+  }
+
   private generateId(): string {
     // Simple ID generator - in a real app, use a more robust solution
     return (
